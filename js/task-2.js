@@ -1,3 +1,5 @@
+'use strict';
+
 const images = [
   {
     url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
@@ -24,3 +26,30 @@ const images = [
     alt: "Lighthouse Coast Sea",
   }
 ];
+
+// Створення карточки зображення
+const createGalleryCard = imageInfo => {
+
+  const galleryItemEl = document.createElement('li');
+  galleryItemEl.classList.add('gallary-item');
+
+
+  const gallaryImgEl = document.createElement('img');
+  gallaryImgEl.src = imageInfo.url;
+  gallaryImgEl.alt = imageInfo.alt;
+  gallaryImgEl.width = 360;
+  gallaryImgEl.height = 300;
+  
+  galleryItemEl.append(gallaryImgEl);
+
+  return galleryItemEl;
+};
+
+
+// Вставка колекції карточок
+
+const gallaryCardsArray = images.map(imgInfo => createGalleryCard(imgInfo));
+
+const galleryListEl = document.querySelector('.gallery');
+galleryListEl.append(...gallaryCardsArray);
+
